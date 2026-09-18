@@ -1,0 +1,267 @@
+
+/* --------------------------------------------------------------------------
+   1. BASE STYLES &amp; CSS RESET
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Color Palette - Pastel Blue Theme */
+    --bg-main: #f0f6fa;           /* Soft pastel blue-gray background */
+    --surface-white: #ffffff;      /* Clean card surface */
+    --primary-pastel: #a8dadc;     /* Core pastel blue */
+    --primary-hover: #81c3c7;      /* Hover state pastel blue */
+    --accent-blue: #457b9d;       /* Muted blue for links and accents */
+    --text-dark: #1d3557;         /* Deep navy slate for high contrast text */
+    --text-muted: #5c7080;        /* Secondary muted body text */
+    --border-subtle: #e1ebf0;     /* Light blue-gray border line */
+    --shadow-soft: 0 4px 20px rgba(29, 53, 87, 0.06);
+    --shadow-hover: 0 8px 25px rgba(29, 53, 87, 0.12);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text-dark);
+    background-color: var(--bg-main);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --------------------------------------------------------------------------
+   2. TYPOGRAPHY STYLES
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4 {
+    color: var(--text-dark);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.85rem;
+}
+
+h1 {
+    font-size: 2.25rem;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--text-dark);
+}
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT STRUCTURE &amp; CONTAINERS
+   -------------------------------------------------------------------------- */
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Sticky Header &amp; Shared Navigation */
+header {
+    background-color: var(--surface-white);
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-soft);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column; /* Mobile first stack */
+    align-items: center;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+}
+
+.logo-link {
+    display: inline-block;
+}
+
+.brand-logo {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Navigation List */
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+nav a {
+    display: inline-block;
+    padding: 0.5rem 0.85rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+}
+
+nav a:hover {
+    background-color: var(--bg-main);
+    color: var(--accent-blue);
+}
+
+/* Active Page Highlight */
+nav a.active {
+    background-color: var(--primary-pastel);
+    color: var(--text-dark);
+}
+
+/* Main Content Area */
+main {
+    flex: 1;
+    padding: 2.5rem 0;
+}
+
+/* Hero Banner Styling */
+.hero {
+    background: linear-gradient(135deg, #ffffff 0%, #e8f1f5 100%);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 1.5rem;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Pastel Call To Action Button */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary-pastel);
+    color: var(--text-dark);
+    font-weight: 600;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 3px 10px rgba(168, 218, 220, 0.4);
+    margin-top: 0.5rem;
+    transition: all 0.25s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(168, 218, 220, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   4. VISUAL STYLES &amp; CARD GRID
+   -------------------------------------------------------------------------- */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Default single column for small screens */
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background-color: var(--surface-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--surface-white);
+    border-top: 1px solid var(--border-subtle);
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   5. RESPONSIVE BREAKPOINTS &amp; MULTI-COLUMN LAYOUTS
+   -------------------------------------------------------------------------- */
+
+/* Breakpoint 1: Tablets &amp; Laptops (≥ 768px) */
+@media (min-width: 768px) {
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    nav ul {
+        gap: 0.5rem;
+    }
+
+    .hero {
+        text-align: left;
+        padding: 3.5rem 3rem;
+    }
+
+    .hero p {
+        margin-left: 0;
+    }
+
+    /* Multi-Column Layouts */
+    .grid-2-col {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3-col {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Breakpoint 2: Large Desktop Screens (≥ 1024px) */
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 2.75rem;
+    }
+
+    .grid-container {
+        gap: 2rem;
+    }
+}
+
